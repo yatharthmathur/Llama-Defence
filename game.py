@@ -75,7 +75,7 @@ while running:
         if badtimer1>=35:
             badtimer1=35
         else:
-            badtimer1+=5
+            badtimer1+=1
     index=0
     for badguy in badguys:
         if badguy[0]<-64:
@@ -98,7 +98,7 @@ while running:
                 badguys.pop(index)
                 arrows.pop(index1)
             index1+=1
-        badguy[0]-=7
+        badguy[0]-=1 #badguy speed1
         index+=1
 
 
@@ -109,7 +109,7 @@ while running:
     for badguy in badguys:
         if badguy[0]<-64:
             badguys.pop(index)
-        badguy[0]-=7
+        badguy[0]-=2 #badguy speed2 total speed addition of both speeds
         index+=1
     for badguy in badguys:
         screen.blit(badguyimg, badguy)

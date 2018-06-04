@@ -1,4 +1,4 @@
 # Llama-Defence
 You've been hired to defend the castles from rabid Llamas.
 Most basic controls.
-Screenshot : ![Alt text](/screenshot.jpg?raw=true "Gameplay")
+Screenshot : ![Gameplay](/screenshot.png?raw=true "Gameplay")

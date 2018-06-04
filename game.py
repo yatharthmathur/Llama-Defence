@@ -15,7 +15,7 @@ arrows=[]
 badtimer=100
 badtimer1=0
 badguys=[[640,100]]
-healthvalue=194
+healthvalue=200
 
 #3 load images
 player=pygame.image.load("resources/images/dude.png")
@@ -57,8 +57,8 @@ while running:
     #6.2 position of arrows
     for bullet in arrows:
         index=0
-        velx=math.cos(bullet[0])*10
-        vely=math.sin(bullet[0])*10
+        velx=math.cos(bullet[0])*12
+        vely=math.sin(bullet[0])*12
         bullet[1]+=velx
         bullet[2]+=vely
         if bullet[1]<-64 or bullet[1]>640 or bullet[2]<-64 or bullet[2]>480:
@@ -85,7 +85,7 @@ while running:
         badrect.top=badguy[1]
         badrect.left=badguy[0]
         if badrect.left<64:
-            healthvalue -= random.randint(5,10)
+            healthvalue -= random.randint(1,5)
             badguys.pop(index)
         #6.3.2 - Check for collisions
         index1=0
@@ -116,7 +116,7 @@ while running:
 
     # 6.4 - Draw clock
     font = pygame.font.Font(None, 24)
-    survivedtext = font.render(str((90000-pygame.time.get_ticks())/60000)+":"+str((90000-pygame.time.get_ticks())/1000%60).zfill(2), True, (0,0,0))
+    survivedtext = font.render(str(int((90000-pygame.time.get_ticks())/60000))+":"+str(int((90000-pygame.time.get_ticks())/1000%60)).zfill(2), True, (0,0,0))
     textRect = survivedtext.get_rect()
     textRect.topright=[635,5]
     screen.blit(survivedtext, textRect)

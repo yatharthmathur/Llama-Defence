@@ -15,7 +15,7 @@ arrows=[]
 badtimer=100
 badtimer1=0
 badguys=[[640,100]]
-healthvalue=194
+healthvalue=200
 
 #3 load images
 player=pygame.image.load("resources/images/dude.png")
@@ -57,8 +57,8 @@ while running:
     #6.2 position of arrows
     for bullet in arrows:
         index=0
-        velx=math.cos(bullet[0])*10
-        vely=math.sin(bullet[0])*10
+        velx=math.cos(bullet[0])*12
+        vely=math.sin(bullet[0])*12
         bullet[1]+=velx
         bullet[2]+=vely
         if bullet[1]<-64 or bullet[1]>640 or bullet[2]<-64 or bullet[2]>480:
@@ -75,7 +75,7 @@ while running:
         if badtimer1>=35:
             badtimer1=35
         else:
-            badtimer1+=5
+            badtimer1+=1
     index=0
     for badguy in badguys:
         if badguy[0]<-64:
@@ -85,7 +85,7 @@ while running:
         badrect.top=badguy[1]
         badrect.left=badguy[0]
         if badrect.left<64:
-            healthvalue -= random.randint(5,10)
+            healthvalue -= random.randint(1,5)
             badguys.pop(index)
         #6.3.2 - Check for collisions
         index1=0
@@ -98,7 +98,7 @@ while running:
                 badguys.pop(index)
                 arrows.pop(index1)
             index1+=1
-        badguy[0]-=7
+        badguy[0]-=1 #badguy speed1
         index+=1
 
 
@@ -109,14 +109,14 @@ while running:
     for badguy in badguys:
         if badguy[0]<-64:
             badguys.pop(index)
-        badguy[0]-=7
+        badguy[0]-=2 #badguy speed2 total speed addition of both speeds
         index+=1
     for badguy in badguys:
         screen.blit(badguyimg, badguy)
 
     # 6.4 - Draw clock
     font = pygame.font.Font(None, 24)
-    survivedtext = font.render(str((90000-pygame.time.get_ticks())/60000)+":"+str((90000-pygame.time.get_ticks())/1000%60).zfill(2), True, (0,0,0))
+    survivedtext = font.render(str(int((90000-pygame.time.get_ticks())/60000))+":"+str(int((90000-pygame.time.get_ticks())/1000%60)).zfill(2), True, (0,0,0))
     textRect = survivedtext.get_rect()
     textRect.topright=[635,5]
     screen.blit(survivedtext, textRect)
@@ -183,7 +183,7 @@ while running:
 if exitcode==0:
     pygame.font.init()
     font = pygame.font.Font(None, 24)
-    text = font.render("Accuracy: "+str(accuracy)+"%", True, (255,0,0))
+    text = font.render("Accuracy: "+str(int(accuracy))+"%", True, (255,0,0))
     textRect = text.get_rect()
     textRect.centerx = screen.get_rect().centerx
     textRect.centery = screen.get_rect().centery+24
@@ -192,7 +192,7 @@ if exitcode==0:
 else:
     pygame.font.init()
     font = pygame.font.Font(None, 24)
-    text = font.render("Accuracy: "+str(accuracy)+"%", True, (0,255,0))
+    text = font.render("Accuracy: "+str(int(accuracy))+"%", True, (0,255,0))
     textRect = text.get_rect()
     textRect.centerx = screen.get_rect().centerx
     textRect.centery = screen.get_rect().centery+24

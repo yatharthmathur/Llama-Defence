@@ -183,7 +183,7 @@ while running:
 if exitcode==0:
     pygame.font.init()
     font = pygame.font.Font(None, 24)
-    text = font.render("Accuracy: "+str(accuracy)+"%", True, (255,0,0))
+    text = font.render("Accuracy: "+str(int(accuracy))+"%", True, (255,0,0))
     textRect = text.get_rect()
     textRect.centerx = screen.get_rect().centerx
     textRect.centery = screen.get_rect().centery+24
@@ -192,7 +192,7 @@ if exitcode==0:
 else:
     pygame.font.init()
     font = pygame.font.Font(None, 24)
-    text = font.render("Accuracy: "+str(accuracy)+"%", True, (0,255,0))
+    text = font.render("Accuracy: "+str(int(accuracy))+"%", True, (0,255,0))
     textRect = text.get_rect()
     textRect.centerx = screen.get_rect().centerx
     textRect.centery = screen.get_rect().centery+24

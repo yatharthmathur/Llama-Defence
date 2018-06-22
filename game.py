@@ -68,7 +68,7 @@ while running:
             arrow1 = pygame.transform.rotate(arrow, 360-projectile[0]*57.29)
             screen.blit(arrow1, (projectile[1], projectile[2]))
 
-    # 6.3 - Draw badgers
+    # 6.3 - Draw llamas
     if badtimer==0:
         badguys.append([640, random.randint(50,430)])
         badtimer=100-(badtimer1*2)
@@ -85,7 +85,7 @@ while running:
         badrect.top=badguy[1]
         badrect.left=badguy[0]
         if badrect.left<64:
-            healthvalue -= random.randint(1,5)
+            healthvalue -= random.randint(1,20)
             badguys.pop(index)
         #6.3.2 - Check for collisions
         index1=0
@@ -183,7 +183,7 @@ while running:
 if exitcode==0:
     pygame.font.init()
     font = pygame.font.Font(None, 24)
-    text = font.render("Accuracy: "+str(accuracy)+"%", True, (255,0,0))
+    text = font.render("Accuracy: "+str(int(accuracy))+"%", True, (255,0,0))
     textRect = text.get_rect()
     textRect.centerx = screen.get_rect().centerx
     textRect.centery = screen.get_rect().centery+24
@@ -192,7 +192,7 @@ if exitcode==0:
 else:
     pygame.font.init()
     font = pygame.font.Font(None, 24)
-    text = font.render("Accuracy: "+str(accuracy)+"%", True, (0,255,0))
+    text = font.render("Accuracy: "+str(int(accuracy))+"%", True, (0,255,0))
     textRect = text.get_rect()
     textRect.centerx = screen.get_rect().centerx
     textRect.centery = screen.get_rect().centery+24

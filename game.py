@@ -10,6 +10,7 @@ w,h=640,480
 screen=pygame.display.set_mode((w,h))
 keys=[False,False,False,False] #state of WASD
 playerpos=[100,100]
+marypos = [400,100];
 acc=[0,0]
 arrows=[]
 badtimer=100
@@ -19,6 +20,7 @@ healthvalue=200
 
 #3 load images
 player=pygame.image.load("resources/images/dude.png")
+mary=pygame.image.load("resources/images/mary.png")
 grass=pygame.image.load("resources/images/grass.png")
 castle=pygame.image.load("resources/images/castle.png")
 arrow = pygame.image.load("resources/images/bullet.png")
@@ -53,6 +55,19 @@ while running:
     playerrot = pygame.transform.rotate(player, 360-angle*57.29)
     playerpos1 = (playerpos[0]-playerrot.get_rect().width/2, playerpos[1]-playerrot.get_rect().height/2)
     screen.blit(playerrot, playerpos1)
+
+    #6.1.5.1 rotation of mary
+
+    maryangle =math.atan2(playerpos[1]-marypos[1],playerpos[0]-marypos[0])
+    maryrot=pygame.transform.rotate(mary, 180-maryangle*57.29)
+    marypos1 = (marypos[0]-maryrot.get_rect().width/2, marypos[1]-maryrot.get_rect().height/2)
+    screen.blit(maryrot, marypos1)
+
+    #6.1.5.2 movement of marypos
+    vx=math.cos(maryangle)*1;
+    vy=math.sin(maryangle)*1;
+    marypos[0]+=vx;
+    marypos[1]+=vy;
 
     #6.2 position of arrows
     for bullet in arrows:

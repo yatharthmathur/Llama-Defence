@@ -193,6 +193,9 @@ while running:
         accuracy=acc[0]*1.0/acc[1]*100
     else:
         accuracy=0
+    if marypos[1]==playerpos[1] and marypos[0]==playerpos[0]:
+        running = 0
+        exitcode = 0
 
 # 11 - Win/lose display
 if exitcode==0:
